@@ -22,11 +22,15 @@ export class AppComponent {
     25, 37, 19, -4, 28, 21, 19, 28, 33, 31, 9, 11, 5, -12, -5,
   ];
 
+  // constructor() {
+  //   this.historicTemperatures.sort((a, b) => a > b ? 1 : -1)
+  // }
+
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    // this.historicTemperatures[index] = 18;
     // Pure pipes in Angular are only re-evaluated when the input reference changes — not when the content of the array changes.
-    // const newTemps = [...this.historicTemperatures];
-    // newTemps[index] = 18;
-    // this.historicTemperatures = newTemps;
+    const newTemps = [...this.historicTemperatures];
+    newTemps[index] = 18;
+    this.historicTemperatures = newTemps;
   }
 }
