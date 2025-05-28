@@ -7,7 +7,7 @@ import { SortPipe } from './sort.pipe';
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  imports: [DatePipe, DecimalPipe, TemperaturePipe, SortPipe]
+  imports: [DatePipe, DecimalPipe, TemperaturePipe, SortPipe],
 })
 export class AppComponent {
   currentDate = new Date();
@@ -23,6 +23,10 @@ export class AppComponent {
   ];
 
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    // this.historicTemperatures[index] = 18;
+    // Pure pipes in Angular are only re-evaluated when the input reference changes — not when the content of the array changes.
+    const newTemps = [...this.historicTemperatures];
+    newTemps[index] = 18;
+    this.historicTemperatures = newTemps;
   }
 }
